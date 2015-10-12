@@ -80,6 +80,9 @@
 (define/types (xyz [float x] [float y] [float z] -> Object)
   (ros-xyz x y z))
 
+(define/types (xy [float x] [float y] -> Object)
+  (ros-xyz x y 0.0))
+
 ;;; xyz : float float float -> xyz
 ;;; coordinate abstraction
 (define/types (pol [float r] [float ang] -> Object)
