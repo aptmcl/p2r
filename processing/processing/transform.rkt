@@ -31,9 +31,8 @@
 
 (define/types (surface [Object a] -> Object)
   (surface-grid
-   (map
-    (lambda (x) (flatten (map vector->list (vector->list x))))
-    (vector->list a))))
+   (map vector->list
+        (vector->list a))))
 
 (define/types (thicken [Object a] [Object f] -> Object)
   (thicken a f))
