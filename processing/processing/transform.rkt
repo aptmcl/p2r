@@ -26,6 +26,15 @@
 (define/types (loft [Object a] [Object b] -> Object)
   (loft (list a b)))
 
+(define/types (loft [Object a] [Object b] [Object c] -> Object)
+  (loft (list a b c)))
+
+(define/types (loft [Object a] [Object b] [Object c] [Object d] -> Object)
+  (loft (list a b c d)))
+
+(define/types (sweep [Object a] [Object b] -> Object)
+  (sweep a b))
+
 (define/types (division [float min] [float max] [int n] -> Object)
   (list->vector (division min max n)))
 
