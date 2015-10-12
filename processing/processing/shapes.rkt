@@ -83,6 +83,10 @@
 (define/types (xy [float x] [float y] -> Object)
   (ros-xyz x y 0.0))
 
+(define/types (distance [Object p0] [Object p1] -> float)
+  (ros-distance p0 p1))
+
+
 ;;; xyz : float float float -> xyz
 ;;; coordinate abstraction
 (define/types (pol [float r] [float ang] -> Object)
