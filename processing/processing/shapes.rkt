@@ -92,6 +92,43 @@
 (define/types (distance [Object p0] [Object p1] -> float)
   (ros-distance p0 p1))
 
+(define (normal-poligono pts)
+  (norm-c
+   (produtos-cruzados
+    (append pts (list (car pts))))))
+
+(define (produtos-cruzados pts)
+  (if (null? (cdr pts))
+    (xyz 0 0 0)
+    (+c (produto-cruzado (car pts) (cadr pts))
+        (produtos-cruzados (cdr pts)))))
+
+(define (produto-cruzado p0 p1)
+  (cross-c p0 p1))
+
+(define (normal-quadrangulo p0 p1 p2 p3)
+  (normal-poligono (list p0 p1 p2 p3)))
+
+(define (media a b)
+  (/ (+ a b) 2.0))
+
+(define (media-pontos p0 p1)
+  (xyz (media (cx p0) (cx p1))
+       (media (cy p0) (cy p1))
+       (media (cz p0) (cz p1))))
+
+(define (centro-quadrangulo p0 p1 p2 p3)
+  (media-pontos
+    (media-pontos p0 p2)
+    (media-pontos p1 p3)))
+
+(define/types (quad-center [Object p0] [Object p1] [Object p2] [Object p3] -> Object)
+  (centro-quadrangulo p0 p1 p2 p3))
+
+(define/types (quad-normal [Object p0] [Object p1] [Object p2] [Object p3] -> Object)
+  (normal-quadrangulo p0 p1 p2 p3))
+
+
 
 ;;; xyz : float float float -> xyz
 ;;; coordinate abstraction
