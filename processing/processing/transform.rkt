@@ -14,6 +14,9 @@
 (define/types (subtraction [Object s1] [Object s2] -> Object)
   (subtraction s1 s2))
 
+(define/types (empty-shape -> Object)
+  (empty-shape))
+
 (define/types (union [Object s1] [Object s2] -> Object)
   (union s1 s2))
 
