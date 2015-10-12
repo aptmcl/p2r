@@ -89,6 +89,9 @@
 (define/types (xy [float x] [float y] -> Object)
   (ros-xyz x y 0.0))
 
+(define/types (add-c [Object p0] [Object p1] -> Object)
+  (ros-+c p0 p1))
+
 (define/types (distance [Object p0] [Object p1] -> float)
   (ros-distance p0 p1))
 
