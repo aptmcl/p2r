@@ -16,6 +16,11 @@
       (ros-circle point c)
       (ros-ellipse point c d)))
 
+(define/types (surface-ellipse [Object point] [float c] [float d] -> void)
+  (if (= c d)
+      (ros-surface-circle point c)
+      (ros-surface-ellipse point c d)))
+
 (define/types (line [Object p1] [Object p2] -> void)
   (ros-line p1 p2))
 
@@ -30,6 +35,9 @@
 
 (define/types (rect [Object p1] [float c] [float d] -> void)
   (ros-rectangle p1 c d))
+
+(define/types (surface-rect [Object p1] [float c] [float d] -> void)
+  (ros-surface-rectangle p1 c d))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Curves
