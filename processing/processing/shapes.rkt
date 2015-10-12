@@ -92,6 +92,9 @@
 (define/types (add-c [Object p0] [Object p1] -> Object)
   (ros-+c p0 p1))
 
+(define/types (mul-c [Object p] [float r] -> Object)
+  (ros-*c p r))
+
 (define/types (distance [Object p0] [Object p1] -> float)
   (ros-distance p0 p1))
 
