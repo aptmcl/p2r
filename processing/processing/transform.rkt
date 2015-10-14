@@ -41,7 +41,7 @@
 (define/types (division [float min] [float max] [int n] -> Object)
   (list->vector (division min max n)))
 
-(define/types (surface [Object a] -> Object)
+(define/types (surface-grid [Object a] -> Object)
   (surface-grid
    (map vector->list
         (vector->list a))))
