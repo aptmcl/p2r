@@ -92,11 +92,19 @@
 (define/types (add-c [Object p0] [Object p1] -> Object)
   (ros-+c p0 p1))
 
+(define/types (sub-c [Object p0] [Object p1] -> Object)
+  (ros--c p0 p1))
+
 (define/types (mul-c [Object p] [float r] -> Object)
   (ros-*c p r))
 
+(define/types (div-c [Object p] [float r] -> Object)
+  (ros-/c p r))
+
+
 (define/types (distance [Object p0] [Object p1] -> float)
   (ros-distance p0 p1))
+
 
 (define (normal-poligono pts)
   (ros-norm-c
@@ -135,7 +143,6 @@
   (normal-quadrangulo p0 p1 p2 p3))
 
 
-
 ;;; xyz : float float float -> xyz
 ;;; coordinate abstraction
 (define/types (pol [float r] [float ang] -> Object)
@@ -145,6 +152,14 @@
 ;;; coordinate abstraction
 (define/types (cyl [float r] [float th] [float fi] -> Object)
   (ros-cyl r th fi))
+
+
+(define/types (regular-polygon [int s] [Object p] [float r] [float a] [boolean i]-> Object)
+  (ros-regular-polygon s p r a i))
+
+(define/types (surface [Object s]-> Object)
+  (ros-surface s))
+
 
 ;;; box : -> void
 ;;; unary rectangular cuboid from the bottom-left corner
