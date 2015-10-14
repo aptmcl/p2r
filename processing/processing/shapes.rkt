@@ -101,6 +101,17 @@
 (define/types (div-c [Object p] [float r] -> Object)
   (ros-/c p r))
 
+(define/types (cx [Object p] -> float)
+  (ros-cx p))
+
+(define/types (cy [Object p] -> float)
+  (ros-cy p))
+
+(define/types (cz [Object p] -> float)
+  (ros-cy p))
+
+(define/types (intermediate-point [Object p0] [Object p1] [float f] -> Object)
+  (ros-+c p0 (ros-*c (ros--c p1 p0) f)))
 
 (define/types (distance [Object p0] [Object p1] -> float)
   (ros-distance p0 p1))
