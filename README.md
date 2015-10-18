@@ -6,10 +6,10 @@ P2R (Processing to Racket) is an implementation of the Processing programming la
 ## Installation:
 Before installing P2R, you will need to have [Racket](http://www.racket-lang.org/).
 
-You can install P2R from DrRacket's Install Package dialog box with `git://github.com/hfcorreia/p2r` as the package source.
+You can install P2R from DrRacket's Install Package dialog box with `git://github.com/aptmcl/p2r` as the package source.
 Alternatively, you can install it with the `raco` tool by running:
 
-> `raco pkg install git://github.com/hfcorreia/p2r`
+> `raco pkg install git://github.com/aptmcl/p2r`
 
 ## Updating:
 
