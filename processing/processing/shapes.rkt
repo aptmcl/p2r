@@ -110,6 +110,9 @@
 (define/types (cz [Object p] -> float)
   (ros-cy p))
 
+(define/types (intermediate-point [Object p0] [Object p1] -> Object)
+  (ros-+c p0 (ros-*c (ros--c p1 p0) 0.5)))
+
 (define/types (intermediate-point [Object p0] [Object p1] [float f] -> Object)
   (ros-+c p0 (ros-*c (ros--c p1 p0) f)))
 

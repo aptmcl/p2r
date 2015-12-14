@@ -23,8 +23,29 @@
 (define/types (union [Object s1] [Object s2] [Object s3] -> Object)
   (union s1 s2 s3))
 
+(define/types (union [Object s1] [Object s2] [Object s3] [Object s4] -> Object)
+  (union s1 s2 s3 s4))
+
+(define/types (union [Object s1] [Object s2] [Object s3] [Object s4] [Object s5] -> Object)
+  (union s1 s2 s3 s4 s5))
+
+(define/types (union [Object s1] [Object s2] [Object s3] [Object s4] [Object s5] [Object s6] -> Object)
+  (union s1 s2 s3 s4 s5 s6))
+
 (define/types (spline [Object a] -> Object)
   (spline (vector->list a)))
+
+(define/types (spline [Object p1] [Object p2] -> Object)
+  (spline (list p1 p2)))
+
+(define/types (spline [Object p1] [Object p2] [Object p3] -> Object)
+  (spline (list p1 p2 p3)))
+
+(define/types (spline [Object p1] [Object p2] [Object p3] [Object p4] -> Object)
+  (spline (list p1 p2 p3 p4)))
+
+(define/types (spline [Object p1] [Object p2] [Object p3] [Object p4] [Object p5] -> Object)
+  (spline (list p1 p2 p3 p4 p5)))
 
 (define/types (loft [Object a] [Object b] -> Object)
   (loft (list a b)))
