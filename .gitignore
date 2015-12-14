@@ -1,5 +1,11 @@
-compiled/
+# Backup #
+###################
+*.bak
 *~
+
+# Racket's Compiled #
+###################
+compiled/
 *.debug
 *.aux
 *.pdf
