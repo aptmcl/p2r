@@ -407,3 +407,9 @@ rect(a, b, c, d, tl, tr, br, bl)
 
 (define/types (str [float x] -> String)
   (number->string x))
+
+(define/types (float [String x] -> float)
+  (real->double-flonum (string->number x)))
+
+(define/types (float [int x] -> float)
+  (real->double-flonum x))
