@@ -132,6 +132,16 @@
         (%circle point c)
         (%ellipse point c d))))
 
+(define/types (ellipse [float a] [float b] [float c] [float d] -> void)
+  (when (fill-color)
+    (if (= c d)
+        (%surface-circle (%xy a b) c)
+        (%surface-ellipse (%xy a b) c d)))
+  (when (stroke-color)
+    (if (= c d)
+        (%circle (%xy a b) c)
+        (%ellipse (%xy a b) c d))))
+
 (define/types (surface-circle [Object point] [float c] -> void)
   (%surface-circle point c))
 
