@@ -1,6 +1,7 @@
 #lang racket/base
 
 (require racket/math)
+(require racket/file)
 (provide (all-defined-out))
 
 (require (prefix-in % rosetta)
@@ -399,3 +400,7 @@ rect(a, b, c, d, tl, tr, br, bl)
 (define/types (torus  [Object p] [float r1] [float r2] -> Object)
   (%torus p r1 r2))
 
+
+;;;
+(define/types (load-strings [String path] -> Object)
+  (list->vector (file->lines path)))
