@@ -155,6 +155,8 @@
   (when (stroke-color)
     (%rectangle (%xy a b) c d)))
 
+
+
 #|
 rect(a, b, c, d, r)
 rect(a, b, c, d, tl, tr, br, bl)
