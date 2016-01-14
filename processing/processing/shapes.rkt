@@ -107,7 +107,7 @@
 (define/types (nosmooth -> void)
   (void))
 
-(define/types (framerate [int level] -> void)
+(define/types (frame-rate [int level] -> void)
   (void))
 
 
