@@ -149,6 +149,17 @@
 (define/types (rect [Object p1] [float c] [float d] -> void)
   (%rectangle p1 c d))
 
+(define/types (rect [float a] [float b] [float c] [float d] -> void)
+  (when (fill-color)
+    (%surface-rectangle (%xy a b) c d))
+  (when (stroke-color)
+    (%rectangle (%xy a b) c d)))
+
+#|
+rect(a, b, c, d, r)
+rect(a, b, c, d, tl, tr, br, bl)
+|#
+
 (define/types (surface-rect [Object p1] [float c] [float d] -> void)
   (%surface-rectangle p1 c d))
 
