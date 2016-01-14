@@ -111,6 +111,11 @@
 (define/types (frame-rate [int level] -> void)
   (void))
 
+(define stroke-thickness (make-parameter 1))
+
+(define/types (stroke-weight [float w] -> void)
+  (stroke-thickness w)
+  (void))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 2D Shapes
@@ -147,6 +152,10 @@
 
 (define/types (line [Object p1] [Object p2] -> void)
   (%line p1 p2))
+
+(define/types (line [float a] [float b] [float c] [float d] -> void)
+  (%line (%xy a b) (%xy c d)))
+
 
 (define/types (point [Object p] -> void)
   (%point p))
