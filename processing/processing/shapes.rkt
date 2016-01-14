@@ -101,6 +101,9 @@
 (define/types (smooth [int level] -> void)
   (void))
 
+(define/types (smooth -> void)
+  (void))
+
 (define/types (nosmooth -> void)
   (void))
 
