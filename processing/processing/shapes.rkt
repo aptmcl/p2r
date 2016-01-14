@@ -404,3 +404,6 @@ rect(a, b, c, d, tl, tr, br, bl)
 ;;;
 (define/types (load-strings [String path] -> Object)
   (list->vector (file->lines path)))
+
+(define/types (str [float x] -> String)
+  (number->string x))
