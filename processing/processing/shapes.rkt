@@ -70,7 +70,7 @@
   (fill-color (color red green blue alpha))
   (void))
 
-(define/types (nofill -> void)
+(define/types (no-fill -> void)
   (fill-color #f)
   (void))
 
@@ -94,7 +94,7 @@
   (stroke-color (color red green blue alpha))
   (void))
 
-(define/types (nostroke -> void)
+(define/types (no-stroke -> void)
   (stroke-color #f)
   (void))
 
@@ -104,7 +104,7 @@
 (define/types (smooth -> void)
   (void))
 
-(define/types (nosmooth -> void)
+(define/types (no-smooth -> void)
   (void))
 
 (define/types (frame-rate [int level] -> void)
