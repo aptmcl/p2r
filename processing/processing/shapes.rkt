@@ -147,26 +147,38 @@
         (%circle (%xy a b) c)
         (%ellipse (%xy a b) c d))))
 
-(define/types (surface-circle [Object point] [float c] -> void)
+(define/types (surface-circle [Object point] [float c] -> Object)
   (%surface-circle point c))
 
-(define/types (line [Object p1] [Object p2] -> void)
+(define/types (line [Object p1] [Object p2] -> Object)
   (%line p1 p2))
 
-(define/types (line [float a] [float b] [float c] [float d] -> void)
+(define/types (line [Object p1] [Object p2] [Object p3] -> Object)
+  (%line p1 p2 p3))
+
+(define/types (line [Object p1] [Object p2] [Object p3] [Object p4] -> Object)
+  (%line p1 p2 p3 p4))
+
+(define/types (line [Object p1] [Object p2] [Object p3] [Object p4] [Object p5] -> Object)
+  (%line p1 p2 p3 p4 p5))
+
+(define/types (line [Object p1] [Object p2] [Object p3] [Object p4] [Object p5] [Object p6] -> Object)
+  (%line p1 p2 p3 p4 p5 p6))
+
+(define/types (line [float a] [float b] [float c] [float d] -> Object)
   (%line (%xy a b) (%xy c d)))
 
 
-(define/types (point [Object p] -> void)
+(define/types (point [Object p] -> Object)
   (%point p))
 
-(define/types (quad [Object p1] [Object p2] [Object p3] [Object p4] -> void)
+(define/types (quad [Object p1] [Object p2] [Object p3] [Object p4] -> Object)
   (%polygon p1 p2 p3 p4))
 
-(define/types (triangle [Object p1] [Object p2] [Object p3] -> void)
+(define/types (triangle [Object p1] [Object p2] [Object p3] -> Object)
   (%polygon p1 p2 p3))
 
-(define/types (rect [Object p1] [float c] [float d] -> void)
+(define/types (rect [Object p1] [float c] [float d] -> Object)
   (%rectangle p1 c d))
 
 (define/types (rect [float a] [float b] [float c] [float d] -> void)
@@ -182,7 +194,7 @@ rect(a, b, c, d, r)
 rect(a, b, c, d, tl, tr, br, bl)
 |#
 
-(define/types (surface-rect [Object p1] [float c] [float d] -> void)
+(define/types (surface-rect [Object p1] [float c] [float d] -> Object)
   (%surface-rectangle p1 c d))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -313,115 +325,115 @@ rect(a, b, c, d, tl, tr, br, bl)
   (%surface s))
 
 
-;;; box : -> void
+;;; box : -> Object
 ;;; unary rectangular cuboid from the bottom-left corner
 (define/types (box -> Object)
   (%box))
 
-;;; box : xyz xyz -> void
+;;; box : xyz xyz -> Object
 ;;; rectagular cuboid from the bottom-left corner to opposite top corner
 (define/types (box [Object p1] [Object p2] -> Object)
   (%box p1 p2))
 
-;;; box : xyz float float float -> void
+;;; box : xyz float float float -> Object
 ;;; rectagular cuboid from the bottom-left with length, witdh and height
 (define/types (box [Object p1] [float dx] [float dy] [float dz] -> Object)
   (%box p1 dx dy dz))
 
-;;; right-cuboid : xyz float float float -> void
+;;; right-cuboid : xyz float float float -> Object
 ;;; cuboid base centered on a point
 (define/types (right-cuboid [Object p1] [float dx] [float dy] [float dz] -> Object)
   (%right-cuboid p1 dx dy dz))
 
-;;; cuboid : xyz ... xyz -> void
+;;; cuboid : xyz ... xyz -> Object
 ;;; cuboid based on 4 top vertices and 4 bot vertices
 (define/types (cuboid [Object b1] [Object b2] [Object b3] [Object b4] [Object t1] [Object t2] [Object t3] [Object t4] -> Object)
   (%cuboid b1 b2 b3 b4 t1 t2 t3 t4))
 
-;;; sphere : xyz float -> void
+;;; sphere : xyz float -> Object
 ;;; sphere given the centroid point and the radius
 (define/types (sphere [Object p] [float r] -> Object)
   (%sphere p r))
 
-;;; cylinder : xyz float float -> void
+;;; cylinder : xyz float float -> Object
 ;;; cylinder given base center, radius and height
 (define/types (cylinder [Object p] [float r] [float h] -> Object)
   (%cylinder p r h))
 
-;;; cylinder : xyz float float -> void
+;;; cylinder : xyz float float -> Object
 ;;; cylinder given base center, radius and height
 (define/types (cylinder [Object b] [float r] [Object t] -> Object)
   (%cylinder b r t))
 
-;;; cone : xyz float float -> void
+;;; cone : xyz float float -> Object
 ;;; cone given base center, radius and height
 (define/types (cone [Object b] [float r] [float h] -> Object)
   (%cone b r h))
 
-;;; cone : xyz float xyz -> void
+;;; cone : xyz float xyz -> Object
 ;;; cone given the base center, radius and top center
 (define/types (cone [Object b] [float r] [Object t] -> Object)
   (%cone b r t))
 
-;;; cone-frustum : xyz float float float -> void
+;;; cone-frustum : xyz float float float -> Object
 ;;; cone-frustum given the base center, bottom radius , height and top radius
 (define/types (cone-frustum [Object b] [float r1] [float h] [float r2] -> Object)
   (%cone-frustum b r1 h r2))
 
-;;; cone-frustum : xyz float xyz float -> void
+;;; cone-frustum : xyz float xyz float -> Object
 ;;; given the base center, bottom radius , top center and top radius
 (define/types (cone-frustum [Object b] [float r1] [Object t] [float r2] -> Object)
   (%cone-frustum b r1 t r2))
 
-;;; pyramid : int xyz float float float -> void
+;;; pyramid : int xyz float float float -> Object
 ;;; takes the number of sides, base point, base radius, initial angle and height
 (define/types (pyramid [float n] [Object p] [float r] [float ang] [float h] -> Object)
   (%regular-pyramid n p r ang h))
 
-;;; pyramid : int xyz float xyz float -> void
+;;; pyramid : int xyz float xyz float -> Object
 ;;; takes the number of sides, base point, base radius, initial angle and top point
 (define/types (pyramid [float n] [Object p] [float r] [float ang] [Object t] -> Object)
   (%regular-pyramid n p r ang t))
 
-;;; pyramid-frustum : int xyz float float float float -> void
+;;; pyramid-frustum : int xyz float float float float -> Object
 ;;; takes the number of sides, base point, base radius, initial angle, height, and top radius
 (define/types (pyramid-frustum [float n] [Object p] [float r] [float ang] [float h] [float r2] -> Object)
   (%regular-pyramid-frustum n p r ang h r2))
 
-;;; pyramid-frustum : int xyz float xyz float float -> void
+;;; pyramid-frustum : int xyz float xyz float float -> Object
 ;;; takes the number of sides, base point, base radius, initial angle, top point, and top radius
 (define/types (pyramid-frustum [float n] [Object p] [float r] [float ang] [Object t] [float r2] -> Object)
   (%regular-pyramid-frustum n p r ang t r2))
 
-;;; irregular-pyramid : (vector/of xyz) xyz -> void
+;;; irregular-pyramid : (vector/of xyz) xyz -> Object
 ;;; takes a list of points that define the base and the location of the apex
 (define/types (irregular-pyramid [Object lst] [Object apex] -> Object)
   (%irregular-pyramid  (vector->list lst) apex #t))
 
-;;; prism : int xyz float float float -> void
+;;; prism : int xyz float float float -> Object
 ;;; takes the number of sides, base point, base radius, initial angle, height.
 (define/types (prism [float n] [Object p] [float r] [float ang] [float h] -> Object)
   (%regular-prism n p r ang h))
 
-;;; prism : int xyz float float xyz -> void
+;;; prism : int xyz float float xyz -> Object
 ;;; takes the number of sides, base point, base radius, initial angle, top point.
 (define/types (prism [float n] [Object p] [float r] [float ang] [Object t] -> Object)
   (%regular-prism n p r ang t))
 
-;;; irregular-prism : (vector/of xyz) xyz -> void
+;;; irregular-prism : (vector/of xyz) xyz -> Object
 ;;; takes a list of points that define the base and the location of the apex
 #;
 (define/types (irregular-prism [Object lst] [Object apex] -> Object)
   (%irregular-prism (vector->list lst) apex))
 
-;;; irregular-prism : (vector/of xyz) xyz -> void
+;;; irregular-prism : (vector/of xyz) xyz -> Object
 ;;; takes the center point of the torus, the torus radius and the section radius
 (define/types (torus  [Object p] [float r1] [float r2] -> Object)
   (%torus p r1 r2))
 
 
 ;;;
-(define/types (load-strings [String path] -> Object)
+(define/types (load-strings [String path] -> Object) ;;AML How do we specify String[]?
   (list->vector (file->lines path)))
 
 (define/types (str [float x] -> String)
