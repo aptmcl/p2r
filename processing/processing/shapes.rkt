@@ -4,8 +4,13 @@
 (require racket/file)
 (provide (all-defined-out))
 
-(require (prefix-in % rosetta)
+(require (prefix-in % (planet aml/rosetta))
          "runtime-bindings.rkt")
+
+;;for compatibility with the old rosetta
+(define %unitize %norm-c)
+(define %v+v %+c)
+(define %v*v %cross-c)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 3D Primitives
@@ -19,6 +24,7 @@
 (define/types (xy [float x] [float y] -> Object)
   (%xyz x y 0.0))
 
+#|
 (define/types (translate [float dx] [float dy] -> void)
   (%current-cs (%translated-cs dx dy 0 (%current-cs)))
   (void))
@@ -30,6 +36,7 @@
 (define/types (scale [float f] -> void)
   (%current-cs (%scaled-cs f (%current-cs)))
   (void))
+|#
 
 (define/types (radians [float a] -> float)
   (/ (* a 2 pi) 360))
@@ -127,6 +134,7 @@
   (when (stroke-color)
     (%arc point width start (- stop start))))
 
+#;#;
 (define/types (ellipse [Object point] [float c] [float d] -> void)
   (when (fill-color)
     (if (= c d)
