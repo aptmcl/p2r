@@ -20,8 +20,9 @@
   (backend  id))
 
 (define/types (render [Object f] [Object p1] [Object p2] [Object t]  -> void)
-   (view-with-background p1 p2 t)
-   (render-view f))
+  ;;(view-with-background p1 p2 t)
+  (view p1 p2 t)
+  (render-view f))
 
 (define/types (view-expression -> void)
   (view-expression))
