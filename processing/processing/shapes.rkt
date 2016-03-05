@@ -4,10 +4,11 @@
 (require racket/file)
 (provide (all-defined-out))
 
-(require (prefix-in % (planet aml/rosetta))
+(require (prefix-in % rosetta)
          "runtime-bindings.rkt")
 
 ;;for compatibility with the old rosetta
+#;#;#;
 (define %unitize %norm-c)
 (define %v+v %+c)
 (define %v*v %cross-c)

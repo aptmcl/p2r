@@ -2,7 +2,7 @@
 
 (provide (all-defined-out))
 
-(require (planet aml/rosetta)
+(require rosetta
          "runtime-bindings.rkt")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

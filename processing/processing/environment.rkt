@@ -2,7 +2,7 @@
 
 (provide (all-defined-out))
 
-(require (rename-in (planet aml/rosetta:1:54)
+(require (rename-in rosetta
                     [autocad ros-autocad]
                     [rhino5 ros-rhino5])
          (for-syntax "runtime-bindings.rkt")
