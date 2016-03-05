@@ -4,7 +4,7 @@
 
 (require (rename-in rosetta
                     [autocad ros-autocad]
-                    [rhino5 ros-rhino5])
+                    [rhino ros-rhino])
          (for-syntax "runtime-bindings.rkt")
          "runtime-bindings.rkt"
          racket/system)
@@ -14,7 +14,7 @@
 ;;; Rosetta Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define/types Object : autocad ros-autocad)
-(define/types Object : rhino5 ros-rhino5)
+(define/types Object : rhino ros-rhino)
 
 (define/types (backend [Object id] -> Object)
   (backend  id))

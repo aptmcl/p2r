@@ -1,10 +1,10 @@
 #lang racket
 
-(require (planet aml/rosetta))
+(require rosetta)
 
 (provide elliptic-torus-render)
 
-(backend rhino5)
+(backend rhino)
 
 ;(erase-2d-top)
 
