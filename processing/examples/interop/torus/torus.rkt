@@ -29,7 +29,7 @@
   (poligon-normal (list p0 p1 p2 p3)))
 
 (define (poligon-normal pts)
-  (norm-c
+  (unitize
    (crossed-products
     (append pts (list (car pts))))))
 
