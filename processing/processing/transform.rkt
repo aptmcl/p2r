@@ -70,5 +70,11 @@
 (define/types (thicken [Object a] [Object f] -> Object)
   (thicken a f))
 
-(define/types (layer [String a] -> void)
-  (layer a))
+(define/types (create-layer [String a] -> Object)
+  (create-layer a))
+
+(define/types (current-layer -> Object)
+  (current-layer))
+
+(define/types (current-layer [String a] -> void)
+  (current-layer a))
