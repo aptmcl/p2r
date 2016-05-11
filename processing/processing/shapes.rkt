@@ -278,7 +278,6 @@ rect(a, b, c, d, tl, tr, br, bl)
 (define/types (distance [Object p0] [Object p1] -> float)
   (%distance p0 p1))
 
-
 (define (normal-poligono pts)
   (%unitize
    (produtos-cruzados
@@ -286,7 +285,7 @@ rect(a, b, c, d, tl, tr, br, bl)
 
 (define (produtos-cruzados pts)
   (if (null? (cdr pts))
-      (%xyz 0 0 0)
+      (%vxyz 0 0 0)
       (%v+v (produto-cruzado (car pts) (cadr pts))
             (produtos-cruzados (cdr pts)))))
 
@@ -294,7 +293,7 @@ rect(a, b, c, d, tl, tr, br, bl)
   (%v*v p0 p1))
 
 (define (normal-quadrangulo p0 p1 p2 p3)
-  (normal-poligono (list p0 p1 p2 p3)))
+  (normal-poligono (list (p-p p1 p0) (p-p p2 p1) (p-p p3 p2) (p-p p0 p3))))
 
 (define (media a b)
   (/ (+ a b) 2.0))
