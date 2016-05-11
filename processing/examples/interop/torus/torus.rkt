@@ -1,10 +1,8 @@
 #lang racket
 
-(require rosetta)
+(require rosetta/autocad)
 
 (provide elliptic-torus-render)
-
-(backend rhino)
 
 ;(erase-2d-top)
 
@@ -36,8 +34,8 @@
 (define (crossed-products pts)
   (if (null? (cdr pts))
       (xyz 0 0 0)
-      (+c (cross-c (car pts) (cadr pts))
-          (crossed-products (cdr pts)))))
+      (v+v (v*v (car pts) (cadr pts))
+           (crossed-products (cdr pts)))))
 
 (define (transpose-matrix matrix)
   (if (null? (car matrix))
@@ -119,7 +117,7 @@
 
 
 (define (elliptic-torus-render p e h f u0 u1 v0 v1)
-  (with-current-layer "White"
+  (with-current-layer (create-layer "White")
                       (iterate-quads (lambda (p0 p1 p2 p3) (openings p0 p1 p2 p3 e h f))
                                      (elliptic-torus-positive p 0.5 u0 u1 60 v0 v1 60))
                       (surface-rectangle (xy -1.7 -1.7) (xy 1.7 1.7))
@@ -132,14 +130,14 @@
 
 
 (define (color-renders)
-  (with-current-layer "Black"
+  (with-current-layer (create-layer "Black")
                       (iterate-quads (lambda (p0 p1 p2 p3) (panel p0 p1 p2 p3))
                                      (elliptic-torus-positive (xyz 0 0 -1) 0.5 pi/4 (+ (/ 3pi 2) pi/4) 60 0 2pi 60)))
-  (with-current-layer "White"
+  (with-current-layer (create-layer "White")
                       (thicken (surface-grid (elliptic-torus-positive (xyz 0 0 -1) 0.5 pi/4 (+ (/ 3pi 2) pi/4) 60 0 2pi 60)) -0.02))
-  (with-current-layer "Grey"
+  (with-current-layer (create-layer "Grey")
                       (surface-rectangle (xy -1.7 -1.7) (xy 1.7 1.7)))
-  (with-current-layer "Red"
+  (with-current-layer (create-layer "Red")
                       (person (+xy (u0) (random-range -1.6 1.6) (random-range -1.6 1.6)) 0.1)
                       (person (+xy (u0) (random-range -1.6 1.6) (random-range -1.6 1.6)) 0.1)
                       (person (+xy (u0) (random-range -1.6 1.6) (random-range -1.6 1.6)) 0.1)
