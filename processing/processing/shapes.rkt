@@ -293,7 +293,7 @@ rect(a, b, c, d, tl, tr, br, bl)
   (%v*v p0 p1))
 
 (define (normal-quadrangulo p0 p1 p2 p3)
-  (normal-poligono (list (p-p p1 p0) (p-p p2 p1) (p-p p3 p2) (p-p p0 p3))))
+  (normal-poligono (list (%p-p p1 p0) (%p-p p2 p1) (%p-p p3 p2) (%p-p p0 p3))))
 
 (define (media a b)
   (/ (+ a b) 2.0))
